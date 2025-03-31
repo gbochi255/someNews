@@ -5,11 +5,11 @@ const ArticlesList = () => {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        fetch("https://some-ncnews.onrender.com/articles")
+        fetch("https://some-ncnews.onrender.com/api/articles")
         .then((res) => res.json())
         .then((data )=> {
             console.log('fetched articles:', data);
-            setArticles(data)
+            setArticles(data.articles)
         })
         .catch((err) => console.error(err))
     }, []);
