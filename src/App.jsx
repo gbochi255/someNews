@@ -1,30 +1,26 @@
-import { useState } from 'react'
-import React from 'react'
-import ArticlesList from './components/ArticlesList';
-import ArticleCard from './components/ArticleCard';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ArticleDetailPage from './components/ArticleDetailPage';
+import ArticlesList from './components/ArticlesList';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import CommentsList from './components/CommentsList';
-import CommentCard from './components/CommentCard';
+import './App.css';
+
 
 function App() {
   
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
-      <main>
-        <Routes>
+      <Routes>
           <Route path='/' element={<ArticlesList />} />
           <Route path='/articles' element={<ArticlesList />} />
-          <Route path='/articles/:articleId' element={<ArticleDetailPage />} />
-        </Routes>
-    </main>
+          <Route path='/articles/:article_id' element={<ArticleDetailPage />} />
+      </Routes>
     <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
