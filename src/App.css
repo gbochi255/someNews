@@ -27,7 +27,7 @@
     grid-template-columns: repeat (2, 1fr);
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 800px) {
   .article-list {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -40,3 +40,62 @@
   padding: 20px;
   color: white;
 }
+.article-detail {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  }
+  .article-detail .container {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  .article-detail img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .article-detail .content {
+    line-height: 1.6;
+  }
+  .comment-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+  }
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+    color: #555;
+  }
+  .comment-author {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .comment-timestamp {
+    font-style: italic;
+  }
+  .comment-content {
+    margin: 0;
+  }
+  .comments-section {
+    margin-top: 2rem;
+  }
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+  .comment-text {
+    margin-bottom: 8px;
+  }
+  .comment-timestamp {
+    font-size: 0.85rem;
+    color: #555;
+  }
