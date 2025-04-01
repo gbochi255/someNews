@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 const ArticleCard = ({ article }) => {
@@ -6,12 +7,14 @@ const ArticleCard = ({ article }) => {
     return (
         <article className="article-card">
             <h2 className="article-title">{article.title}</h2>
-            <p className="article-description">{article.description}</p>
+            
             <div className="container">
-                <span>{article.author}</span>
-                <span>{new Date(article.date).toLocaleDateString()}</span>
+                <span className="article-author">By {article.author}</span>
+                <span className="article-date">{new Date(article.created_at).toLocaleDateString()}</span>
             </div>
-            <a href={`/article/${article.id}`} className="read-more">Read More</a>
+            <p>{article.description}</p>
+            <Link to={`/articles/${article.article_id}`} className="read-more">Read More</Link>
+            
         </article>
     );
 };
