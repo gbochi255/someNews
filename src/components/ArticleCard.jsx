@@ -7,7 +7,7 @@ const ArticleCard = ({ article }) => {
         <article className="article-card">
             <h2 className="article-title">{article.title}</h2>
             <p className="article-description">{article.description}</p>
-            <div className="meta">
+            <div className="container">
                 <span>{article.author}</span>
                 <span>{new Date(article.date).toLocaleDateString()}</span>
             </div>
