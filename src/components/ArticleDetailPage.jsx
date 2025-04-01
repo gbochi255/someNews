@@ -4,13 +4,13 @@ import CommentsList from "./CommentsList";
 
 
 const ArticleDetailPage = () => {
-    const { articleId } = useParams();
+    const { article_id } = useParams();
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`https://some-ncnews.onrender.com/api/articles/${articleId}`)
+        fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error("Error fetching article");
@@ -27,31 +27,22 @@ const ArticleDetailPage = () => {
             setLoading(false);
         });
         
-    },[articleId]);
+    },[article_id]);
     
     if (loading) return <p>Loading....</p>;
     if (error) return <p>Error: {error}</p>;
     if(!article) return <p>No Article found</p>;
 
     return (
-        <article className="article-detail">
-            <h1>{article.title}</h1>
-            <div className="container">
-                <span>by {article.author}</span>
-                <span>{new Date(article.created_at).toLocaleDateString()}</span>
+        <div className="article-detail">
+            <h2>{article.title}</h2>
+            <p>By {article.author} | {new Date(article.created_at).toLocaleDateString()}</p>
+            <p>{article.body}</p>
+            <img src={article.article_img_url} 
+            alt={article.title} />
+            <h3>Comments:</h3>
+            <CommentsList article_id={article_id} />
             </div>
-            {article.article_img_url && (
-                <img src={article.article_img_url} 
-                alt={article.title} />
-            )}
-            <div className="content">
-                <p>{article.body}</p>
-            </div>
-            
-                <h2>Comments</h2>
-                <CommentsList articleId={articleId} />
-            
-        </article>
-    );
+            );
 };
 export default ArticleDetailPage;

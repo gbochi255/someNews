@@ -15,10 +15,14 @@ const ArticlesList = () => {
     }, []);
     return (
         <div className="articles-list">
-            {articles.map(article => (
-                <ArticleCard key={article.id} article={article} />
-            ))}
+            {articles && articles.length > 0 ? (
+                articles.map((article) => (
+                    <ArticleCard key={article.article_id} article={article} />
+                ))
+            ) : (
+                <p>No articles available</p>
+            )}
         </div>
     );
-};
+}
 export default ArticlesList;
