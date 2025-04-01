@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentsList from "./CommentsList";
 import VotePanel from "./VotePanel";
+import NewCommentForm from "./NewCommentForm";
 
 
 const ArticleDetailPage = () => {
@@ -9,8 +10,10 @@ const ArticleDetailPage = () => {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [comments, setComments] = useState({});
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}`)
         .then((res) => {
             if (!res.ok) {
@@ -29,6 +32,20 @@ const ArticleDetailPage = () => {
         });
         
     },[article_id]);
+
+    useEffect(() => {
+        fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}/comments`)
+        .then((res) => res.json())
+        .then((data) => {
+            setComments(data.comments);
+        })
+        .catch((err) => console.error(err));
+    }, [article_id]);
+
+    const handleCommentPosted = (newComment) => {
+        //append the new comment optimistically
+        setComments((prevComments) => [newComment, ...prevComments]);
+    };
     
     if (loading) return <p>Loading....</p>;
     if (error) return <p>Error: {error}</p>;
@@ -38,7 +55,7 @@ const ArticleDetailPage = () => {
         <div className="article-detail">
             <h1>{article.title}</h1>
             <div className="container">
-                <span>by {article.author}</span>
+                <span>By {article.author}</span>
                 <span>{new Date(article.created_at).toLocaleDateString()}</span>
             </div>
             {article.article_img_url && (
@@ -49,9 +66,10 @@ const ArticleDetailPage = () => {
                 <p>{article.body}</p>
             </div>
             <VotePanel articleId={article.article_id} initialVotes={article.votes} />
-            <section>
+            <section className="comments-section">
             <h2>Comments</h2>
-            <CommentsList article_id={article.article_id} />
+            <NewCommentForm articleId={article.article_id} onCommentPosted={handleCommentPosted} />
+            <CommentsList comments={comments} />
             </section>
             </div>
     );

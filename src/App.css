@@ -133,3 +133,29 @@
   color: red;
   font-size: 0.9em;
 }
+.new-comment-form {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.new-comment-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+}
+.new-comment-form button:disabled {
+background-color: #aaa;
+cursor: not-allowed;
+}
+.new-comment-form .error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+}
