@@ -28,7 +28,7 @@
 .article-card h2 {
   margin-top: 0;
 }
-.article-card .meta {
+.article-card .container {
   font-size: 0.9em;
   color: #666;
   margin-bottom: 0.5rem;
@@ -154,6 +154,20 @@
   .comment-timestamp {
     font-size: 0.85rem;
     color: #555;
+  }
+  .sort-bar {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .sort-bar label {
+    font-size: 1rem;
+    color: #333;
+  }
+  sort-bar select {
+    margin-left: 0.5rem;
+    padding: 0.25;
   }
   .vote-panel {
     margin: 1rem 0;
