@@ -1,3 +1,13 @@
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
 .articles-list {
   display: grid;
   grid-template-columns: 1fr;
@@ -39,14 +49,18 @@
   margin-top: 0.5rem;
   display: inline-block;
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .articles-list {
     grid-template-columns: repeat (2, 1fr);
+    
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 1400px) {
   .article-list {
     grid-template-columns: repeat(3, 1fr);
+    padding: 32px;
+
+    grid-template-columns: repeat(1fr, 3fr);
   }
 }
 .App {
