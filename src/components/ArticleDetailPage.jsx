@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CommentsList from "./CommentsList";
 import VotePanel from "./VotePanel";
 import NewCommentForm from "./NewCommentForm";
 
 
-const ArticleDetailPage = () => {
+const ArticleDetailPage = ({ currentUser }) => {
     const { article_id } = useParams();
+    const navigate = useNavigate();
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [comments, setComments] = useState({});
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         setLoading(true);
@@ -46,6 +47,19 @@ const ArticleDetailPage = () => {
         //append the new comment optimistically
         setComments((prevComments) => [newComment, ...prevComments]);
     };
+    const handleCommentDelete = (deletedCommentId) => {
+        setComments((prevComments) => prevComments.filter((comment) => comment.comment_id !== deletedCommentId)
+    );
+
+    };
+
+    //handler for return button navigate back in history
+    const handleReturn =() => {
+        navigate(-1)
+    };
+    //const handleReturnSpecificPage = () => {
+       // navigate('/articles')
+    //}
     
     if (loading) return <p>Loading....</p>;
     if (error) return <p>Error: {error}</p>;
@@ -53,6 +67,7 @@ const ArticleDetailPage = () => {
 
     return (
         <div className="article-detail">
+            <button onClick={handleReturn} className="return-button">Return</button>
             <h1>{article.title}</h1>
             <div className="container">
                 <span>By {article.author}</span>
@@ -69,7 +84,10 @@ const ArticleDetailPage = () => {
             <section className="comments-section">
             <h2>Comments</h2>
             <NewCommentForm articleId={article.article_id} onCommentPosted={handleCommentPosted} />
-            <CommentsList comments={comments} />
+            <CommentsList 
+            comments={comments} 
+            currentUser={currentUser}
+            onCommentDelete={handleCommentDelete}/>
             </section>
             </div>
     );

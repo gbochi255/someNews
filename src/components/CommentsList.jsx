@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CommentCard from "./CommentCard"
 
-const CommentsList = ({ articleId }) => {
-    const [comments, setComments] = useState([]);
-    const[loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+const CommentsList = ({ comments, currentUser, onCommentDelete }) => {
+    
 
-    useEffect(() => {
-        fetch(`https://some-ncnews.onrender.com/api/articles/${articleId}/comments`)
-        .then((res) => res.json())
-        .then((data) => setComments(data))
-        .catch((err) => console.error(err));
-    }, [articleId]);
+   
     return (
+
         <div className="comments-list">
-            {comments && comments.length > 0 ? (
+            {comments.length > 0 ? (
                 comments.map((comment) => (
-                    <CommentCard key={comment.comment_id} comment={comment} />
+                    <CommentCard key={comment.comment_id} 
+                    comment={comment} 
+                            currentUser={currentUser}
+                            onDelete={onCommentDelete}/>
                 ))
             ):(
                 <p>No comments available</p>
             )}
             
-        </div>
+            </div>
     );
 };
 export default CommentsList
