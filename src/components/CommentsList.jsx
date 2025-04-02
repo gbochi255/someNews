@@ -8,7 +8,7 @@ const CommentsList = ({ comments, currentUser, onCommentDelete }) => {
     return (
 
         <div className="comments-list">
-            {comments.length > 0 ? (
+            {Array.isArray(comments) && comments.length > 0 ? (
                 comments.map((comment) => (
                     <CommentCard key={comment.comment_id} 
                     comment={comment} 

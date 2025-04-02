@@ -39,7 +39,7 @@ const SortBar =() => {
                 Order:
                 <select value={currentOrder} onChange={handleOrderChange}>
                     <option value="desc">Descending</option>
-                    <option value="ascending"Ascending></option>
+                    <option value="ascending">Ascending</option>
                 </select>
             </label>
         </div>
