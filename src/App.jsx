@@ -6,6 +6,8 @@ import ArticleDetailPage from './components/ArticleDetailPage';
 import ArticlesList from './components/ArticlesList';
 import TopicsList from './components/TopicsList';
 import TopicPage from './components/TopicPage';
+import Users from './components/Users';
+import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -23,6 +25,8 @@ function App() {
           <Route path='/articles/:article_id' element={<ArticleDetailPage currentUser={currentUser} />} />
           <Route path='/topics' element={<TopicsList />} />
           <Route path='/topics/:topic' element={<TopicPage />} />
+          <Route path='/users' element={<Users />} />
+          <Route path='/*' element={<NotFound />} />
       </Routes>
     <Footer />
     </BrowserRouter>

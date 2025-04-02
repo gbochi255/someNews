@@ -10,6 +10,10 @@ const NewCommentForm = ({ articleId,  onCommentPosted }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!commentBody.trim()){
+            setError('Comment cannot be empty.')
+            return;
+        }
 //logic to validate input or ensure required fields
         if(!commentBody.trim()){
             setError('Comment cannot be empty.');

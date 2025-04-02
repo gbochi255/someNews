@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CommentsList from "./CommentsList";
 import VotePanel from "./VotePanel";
 import NewCommentForm from "./NewCommentForm";
@@ -63,7 +63,8 @@ const ArticleDetailPage = ({ currentUser }) => {
     
     if (loading) return <p>Loading....</p>;
     if (error) return <p>Error: {error}</p>;
-    if(!article) return <p>No Article found</p>;
+    if(!article) return <p>No Article found. <Link to="/articles">Return to Articles</Link></p>;
+    
 
     return (
         <div className="article-detail">
