@@ -47,8 +47,7 @@ const NewCommentForm = ({ articleId,  onCommentPosted }) => {
             placeholder="Write your comment here..." 
             required />
             {error && <p className="error">{error}</p>}
-            <button type="submit" disabled={isPosting}>
-                {isPosting ? 'Posting...' : 'Post Comment'}
+            <button type="submit" disabled={isPosting}>{isPosting ? 'Posting...' : 'Post Comment'}
                 </button> 
         </form>
     );
