@@ -11,13 +11,13 @@ const NewCommentForm = ({ article_id,  onCommentPosted }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!commentBody.trim()){
-            //logic to validate input or ensure required fields
+            
             setError('Comment cannot be empty, Enter a comment before submitting.')
             return;
         }
 
         
-        //disable button to avoid duplicate post
+        
         setIsPosting(true);
         setError(null);
 

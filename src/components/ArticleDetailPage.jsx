@@ -44,7 +44,7 @@ const ArticleDetailPage = (currentUser) => {
     }, [article_id]);
 
     const handleCommentPosted = (newComment) => {
-        //append the new comment optimistically
+       
         setComments((prevComments) => [newComment, ...prevComments]);
     };
     const handleCommentDelete = (deletedCommentId) => {
@@ -53,13 +53,11 @@ const ArticleDetailPage = (currentUser) => {
 
     };
 
-    //handler for return button navigate back in history
+   
     const handleReturn =() => {
        navigate(-1)
     };
-    //const handleReturnSpecificPage = () => {
-    //navigate('/comments')
-    //}
+   
     
     if (loading) return <p>Loading....</p>;
     if (error) return <p>Error: {error}</p>;

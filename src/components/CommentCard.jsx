@@ -7,7 +7,7 @@ const handleDelete = () => {
     if (isDeleting) return;
     setIsDeleting(true);
     setDeleteError(null);
-    //if(!comment) return null;
+    
 
     fetch(`https://some-ncnews.onrender.com/api/comments/${comment.comment_id}`, {
         method: 'DELETE'

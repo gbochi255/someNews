@@ -47,8 +47,7 @@ const ArticlesList = () => {
         setError(false)
     }, []);
 
-    //if(loading) return <p>Loading articles...</p>;
-    //if(error) return <p>Error: {error}</p>;
+    
 
     if (loading) return <p>Loading articles...</p>;
     if (error) return <p>Error: {error}</p>

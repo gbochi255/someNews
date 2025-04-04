@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router-dom";
 const SortBar =() => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    //getting current params or default values
+    
     const currentSortBy = searchParams.get('sort_by') || 'created_at';
     const currentOrder = searchParams.get('order') || 'desc';
 
-    //handling sortby changes
+   
     const handleSortByChange = (e) => {
         const newSortBy = e.target.value;
         setSearchParams({
