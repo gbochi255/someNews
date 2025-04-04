@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const NewCommentForm = ({ articleId,  onCommentPosted }) => {
+const NewCommentForm = ({ article_id,  onCommentPosted }) => {
     const [commentBody, setCommentBody] = useState('');
     const [isPosting, setIsPosting] = useState(false);
     const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const NewCommentForm = ({ articleId,  onCommentPosted }) => {
         setIsPosting(true);
         setError(null);
 
-        fetch(`https://some-ncnews.onrender.com/api/articles/${articleId}/comments`,{
+        fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}/comments`,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ body: commentBody })

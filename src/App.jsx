@@ -7,10 +7,12 @@ import ArticlesList from './components/ArticlesList';
 import TopicsList from './components/TopicsList';
 import TopicPage from './components/TopicPage';
 import Users from './components/Users';
+import CommentPage from './components/CommentsPage';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
+
 
 
 function App() {
@@ -20,16 +22,18 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-          <Route path='/' element={<Homepage />} /> 
-          <Route path='/articles' element={<ArticlesList />} />
+          <Route path='/' element={<Homepage />} />
+           <Route path='/articles' element={<ArticlesList />} />
           <Route path='/articles/:article_id' element={<ArticleDetailPage currentUser={currentUser} />} />
           <Route path='/topics' element={<TopicsList />} />
           <Route path='/topics/:topic' element={<TopicPage />} />
           <Route path='/users' element={<Users />} />
+          <Route path='/comments' element={<ArticlesList CommentPage={CommentPage} />} />
           <Route path='/*' element={<NotFound />} />
       </Routes>
     <Footer />
     </BrowserRouter>
+    
   );
 }
 

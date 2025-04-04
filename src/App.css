@@ -45,7 +45,7 @@ body {
 }
 .read-more {
   text-decoration: none;
-  color: blue;
+  color: #b300ff;
   margin-top: 0.5rem;
   display: inline-block;
 }
@@ -195,7 +195,7 @@ body {
     margin: 0 0.5rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
-  }
+    }
   .error {
     color: red;
     font-size: 0.9em;
@@ -218,7 +218,7 @@ body {
     font-size: 1rem;
   }
   .new-comment-form button:disabled {
-  background-color: #aaa;
+  background-color: #f9f9f9;
   cursor: not-allowed;
   }
   .new-comment-form .error {
@@ -300,4 +300,32 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+  .news-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .gallery-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-item h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #333;
+  }
+  .side-image img {
+    width:  100px;
+    height: auto;
+    border-radius: 8px;
+
   }

@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const NewCommentForm = ({ articleId,  onCommentPosted }) => {
+const NewCommentForm = ({ article_id,  onCommentPosted }) => {
     const [commentBody, setCommentBody] = useState('');
     const [isPosting, setIsPosting] = useState(false);
     const [error, setError] = useState(null);
@@ -11,27 +11,26 @@ const NewCommentForm = ({ articleId,  onCommentPosted }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!commentBody.trim()){
-            setError('Comment cannot be empty.')
+            //logic to validate input or ensure required fields
+            setError('Comment cannot be empty, Enter a comment before submitting.')
             return;
         }
-//logic to validate input or ensure required fields
-        if(!commentBody.trim()){
-            setError('Comment cannot be empty.');
-            return;
-        }
+
+        
         //disable button to avoid duplicate post
         setIsPosting(true);
         setError(null);
 
-        fetch(`https://some-ncnews.onrender.com/api/articles/${articleId}/comments`,{
+        fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}/comments`,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ body: commentBody })
+            body: JSON.stringify({ username, body: commentBody })
         })
         .then((res) => {
             if (!res.ok) {
                 throw new Error('Failed to post comment.');
             }
+            return res.json
         })
         .then((data) => {
             onCommentPosted(data.comment);
@@ -46,7 +45,9 @@ const NewCommentForm = ({ articleId,  onCommentPosted }) => {
 
     return (
         <form onSubmit={handleSubmit} className="new-comment-form">
-            <textarea value={commentBody}
+            <label htmlFor="commentBody">New Comment</label>
+            <textarea id="commentBody"
+            value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
             placeholder="Write your comment here..." 
             required />

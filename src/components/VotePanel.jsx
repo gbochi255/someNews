@@ -1,7 +1,7 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 
-const VotePanel = ({ articleId, initialVotes }) => {
+
+const VotePanel = ({ article_id, initialVotes }) => {
     const [votes, setVotes] = useState(initialVotes);
     const [error, setError] = useState(null);
 
@@ -9,7 +9,7 @@ const VotePanel = ({ articleId, initialVotes }) => {
         setVotes((currentVotes) => currentVotes + delta);
         setError(null);
 
-    fetch(`https://some-ncnews.onrender.com/api/articles/${articleId}/votes`),
+    fetch(`https://some-ncnews.onrender.com/api/articles/${article_id}/votes`),
     {
         method: 'PATCH',
         headers: { 'Content-type': 'application/json' },

@@ -5,7 +5,7 @@ import VotePanel from "./VotePanel";
 import NewCommentForm from "./NewCommentForm";
 
 
-const ArticleDetailPage = ({ currentUser }) => {
+const ArticleDetailPage = (currentUser) => {
     const { article_id } = useParams();
     const navigate = useNavigate();
     const [article, setArticle] = useState(null);
@@ -55,10 +55,10 @@ const ArticleDetailPage = ({ currentUser }) => {
 
     //handler for return button navigate back in history
     const handleReturn =() => {
-        navigate(-1)
+       navigate(-1)
     };
     //const handleReturnSpecificPage = () => {
-       // navigate('/articles')
+    //navigate('/comments')
     //}
     
     if (loading) return <p>Loading....</p>;
@@ -68,7 +68,8 @@ const ArticleDetailPage = ({ currentUser }) => {
 
     return (
         <div className="article-detail">
-            <button onClick={handleReturn} className="return-button">Return</button>
+            <button onClick={() => window.history.back()} className="return-home">&larr; return</button>
+            {/*<button onClick={handleReturn} className="return-button">Return</button>*/}
             <h1>{article.title}</h1>
             <div className="container">
                 <span>By {article.author}</span>
@@ -84,7 +85,8 @@ const ArticleDetailPage = ({ currentUser }) => {
             <VotePanel articleId={article.article_id} initialVotes={article.votes} />
             <section className="comments-section">
             <h2>Comments</h2>
-            <NewCommentForm articleId={article.article_id} onCommentPosted={handleCommentPosted} />
+            <NewCommentForm articleId={article.article_id} username={currentUser}
+            onCommentPosted={handleCommentPosted} />
             <CommentsList 
             comments={comments} 
             currentUser={currentUser}

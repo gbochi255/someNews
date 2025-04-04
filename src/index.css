@@ -1,68 +1,303 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
   margin: 0;
+  padding: 0;
+}
+
+.articles-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+.article-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.home-intro {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  color: royalblue;
+}
+.container{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 0.5rem;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.article-card h2 {
+  margin-top: 0;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.article-card .container {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
-button:hover {
-  border-color: #646cff;
+.read-more {
+  text-decoration: none;
+  color: blue;
+  margin-top: 0.5rem;
+  display: inline-block;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (min-width: 768px) {
+  .articles-list {
+    grid-template-columns: repeat (2, 1fr);
+    
   }
-  a:hover {
-    color: #747bff;
+}
+@media (min-width: 1400px) {
+  .article-list {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 32px;
+
+    grid-template-columns: repeat(1fr, 3fr);
   }
-  button {
+}
+.App {
+  text-align: center;
+}
+.site-header {
+  padding: 0.5rem 2rem;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  .logo {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  .main-nav li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #0077cc;
+  }
+  .main-nav a:hover {
+    color: #005fa3;
+  }
+.App.header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+.article-detail {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  }
+  .article-detail .container {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  .article-author {
+    margin-right: 1rem;
+  }
+  .article-date{
+    padding: auto;
+  }
+  .article-detail img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .article-detail .content {
+    line-height: 1.6;
+  }
+  .comment-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+  }
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+    color: #555;
+  }
+  .comment-author {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .comment-timestamp {
+    font-style: italic;
+  }
+  .comment-content {
+    margin: 0;
+  }
+  .comments-section {
+    margin-top: 2rem;
+  }
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+  .comment-text {
+    margin-bottom: 8px;
+  }
+  .comment-timestamp {
+    font-size: 0.85rem;
+    color: #555;
+  }
+  .sort-bar {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .sort-bar label {
+    font-size: 1rem;
+    color: #333;
+  }
+  sort-bar select {
+    margin-left: 0.5rem;
+    padding: 0.25;
+  }
+  .vote-panel {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
     background-color: #f9f9f9;
   }
-}
+  .vote-buttons button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  .new-comment-form {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  .new-comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  .new-comment-form button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  }
+  .new-comment-form .error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+  }
+  .homepage {
+    padding: 4rem 2rem;
+    text-align: center;
+    padding: 2rem;
+  }
+  .homepage h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+  }
+  .homepage p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  .home-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .home-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #0077cc;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    
+  }
+  .home-nav li {
+    display: inline-block;
+    padding: 0;
+  }
+  .home-nav ul {
+    list-style: none;
+  }
+  .home-nav a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: blue;
+  }
+  .pagination {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pagination button {
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+  .return-button {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+  .home-button:hover {
+    background-color: #005fa3;
+  }
+  .return-home {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }

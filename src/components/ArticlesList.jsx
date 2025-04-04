@@ -36,16 +36,16 @@ const ArticlesList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize =5;
 
-    //useEffect(() => {
-        //fetch("https://some-ncnews.onrender.com/api/articles")
-       // .then((res) => res.json())
-       // .then((data )=> {
-         //   setArticles(data.articles)
-          //  setLoading(false);
-        //})
-        //.catch((err) => console.error(err))
-        //setError(false)
-    //}, []);
+    useEffect(() => {
+        fetch("https://some-ncnews.onrender.com/api/articles")
+        .then((res) => res.json())
+        .then((data )=> {
+            setArticles(data.articles)
+            setLoading(false);
+        })
+        .catch((err) => console.error(err))
+        setError(false)
+    }, []);
 
     //if(loading) return <p>Loading articles...</p>;
     //if(error) return <p>Error: {error}</p>;
