@@ -45,14 +45,14 @@ const NewCommentForm = ({ article_id,  onCommentPosted }) => {
 
     return (
         <form onSubmit={handleSubmit} className="new-comment-form">
-            <label htmlFor="commentBody">New Comment</label>
+            <label htmlFor="commentBody">Leave a Comment</label>
             <textarea id="commentBody"
             value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
             placeholder="Write your comment here..." 
             required />
             {error && <p className="error">{error}</p>}
-            <button type="submit" disabled={isPosting}>
+            <button className="submit" type="submit" disabled={isPosting}>
                 {isPosting ? 'Posting...' : 'Post Comment'}
                 </button> 
         </form>

@@ -37,7 +37,7 @@ const ArticlesList = () => {
     const pageSize =5;
 
     useEffect(() => {
-        fetch("https://some-ncnews.onrender.com/api/articles")
+        fetch("https://some-ncnews.onrender.com/api/articles?sort_by=votes")
         .then((res) => res.json())
         .then((data )=> {
             setArticles(data.articles)
@@ -46,7 +46,7 @@ const ArticlesList = () => {
         .catch((err) => console.error(err))
         setError(false)
     }, []);
-
+    
     
 
     if (loading) return <p>Loading articles...</p>;
